@@ -10,5 +10,9 @@
   },
   "devDependencies": {
     "vite": "^4.4.0"
+  },
+  "dependencies": {
+    "weaviate-client": "^2.14.5",
+    "weaviate-ts-client": "^1.4.0"
   }
 }

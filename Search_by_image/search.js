@@ -5,8 +5,8 @@ const client = weaviate.client({
     scheme: 'http',
     host: 'localhost:8080',
 });
-// functionn for the image search
-export function searchByPhoto(uploadInput) {
+// functionn when the client press the search button
+export function Search_event(uploadInput) {
     const file = uploadInput.files[0];
 
     if (file) {
@@ -29,7 +29,7 @@ const imageElement = document.createElement('img');
 
 
 
-// function to preview the image file that user have uploaded
+// function to preview the image file that user have uploaded 
 export function previewImage(uploadInput) {
     const file = uploadInput.files[0];
 
@@ -67,8 +67,7 @@ export function previewImage(uploadInput) {
 
 // Function to perform image search
 async function performImageSearch(imageData) {
-    // Replace this with your own image search implementation using base64 data
-    // Example implementation:
+    
     const test_image = imageData.split(',')[1]; // Extract base64 data from data URL
     const resImage = await client.graphql
         .get()
@@ -87,6 +86,11 @@ async function performImageSearch(imageData) {
 }
 let image_already_found = false;
 let imageElement2=document.createElement('img');
+
+
+
+
+
 // Function to display the image
 function displayImage(data) {
     if (!image_already_found) {
