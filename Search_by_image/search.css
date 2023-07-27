@@ -2,11 +2,20 @@
   padding: 0;
   margin: 0;
 }
-:root{
-    --color1: #2cd31d;
-    --color2:#76da76;
-    --color3:#99f199;
-    --blur:150px;
+:root {
+  --color1: #2cd31d;
+  --color2: #76da76;
+  --color3: #99f199;
+  --blur: 150px;
+}
+body {
+  height: 100vh;
+  background: rgb(2, 0, 36);
+  display: flex;
+
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 h1 {
   color: aliceblue;
@@ -17,30 +26,79 @@ h1 {
   z-index: 3;
   width: 19.5rem;
   height: 29.5rem;
-  background-color: rgb(48, 49, 49);
+  background-color: transparent;
   border-radius: 2rem;
   margin: 2%;
   align-items: center;
   position: absolute;
-
+  perspective: 1000px;
 
   display: flex;
-
 
   flex-direction: column;
 }
 
-
-.animate_card{
-
+.animate_card {
   animation: move 1s forwards ease-in-out;
 }
 
+.card-inner {
+  position: relative;
+  width: 100%;
+
+  height: 100%;
+  transition: transform 0.6s; /* Adding transition for smooth flipping */
+  transform-style: preserve-3d;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hide the back side of the card */
+}
+
+.card-front {
+  background-color: #2b2929;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2rem;
+}
+
+.card-back {
+  background-color: #2b2929;
+  display: flex;
+  border-radius: 2rem;
+  align-items: center;
+  flex-direction: column;
+color: white;
+
+
+  transform: rotateY(180deg); /* Initially hide the back side of the card */
+}
+
+.card-back>img{
+    max-width: 18rem;
+    border: #0069d9 2px solid;
+    border-radius: 12px;
+max-height: 18rem;
+}
+.result{
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+.card.flipped .card-inner {
+  transform: rotateY(180deg); /* Flip the card to its back side */
+}
 
 .upload-area {
-  width: 95%;
-  height: 40%;
-  margin-top: 1rem;
+  width: 90%;
+  height: 50%;
+  margin-top: 0rem;
   border: 2px dashed #007bff;
   border-radius: 10px;
   display: flex;
@@ -49,8 +107,9 @@ h1 {
   cursor: pointer;
 }
 
-.upload-area:hover {
-  background-color: rgba(0, 123, 255, 0.1);
+
+#uploadArea.drag-over {
+  border-color: #00ccff;
 }
 
 .upload-area p {
@@ -70,7 +129,7 @@ h1 {
   align-items: center;
   width: 14rem;
   height: 15rem;
-  margin: 2rem 0 0 0rem;
+  margin: 0rem 0 0 0rem;
 }
 
 .uploadArea_afterUpload > img {
@@ -85,28 +144,13 @@ h1 {
 #uploadInput {
   display: none;
 }
-body {
-  height: 100vh;
-  background: rgb(3, 1, 27);
-  display: flex;
 
-  align-items: center;
-  flex-direction: column;
-  flex-wrap: wrap;
-
-  /* background: linear-gradient(
-    62deg,
-    rgb(18, 16, 53) 23%,
-    rgba(57, 9, 121, 1) 41%,
-    rgba(0, 212, 255, 1) 100%
-  ); */
-}
 .main-body {
   overflow: hidden;
   margin-top: 6rem;
   padding: 0;
-position: inherit;
-  background-color: rgb(0, 0, 0);
+  position: inherit;
+  background-color: transparent;
   width: 20rem;
   height: 30rem;
   display: flex;
@@ -120,17 +164,16 @@ position: inherit;
   background-color: rgb(9, 245, 41);
   width: 45rem;
   opacity: 0;
-  
 
-position: absolute;
-margin-right: -200%;
-margin-top: 60%;
+  position: absolute;
+  margin-right: -200%;
+  margin-top: 60%;
   height: 10rem;
   animation: rotation2 2s infinite;
   z-index: 2;
 }
 .contnt {
-position:unset;
+  position: unset;
 }
 .backspinner-2 {
   opacity: 0;
@@ -172,10 +215,12 @@ position:unset;
     box-shadow: 25px 0px var(--blur) var(--color1), 45px 0px var(--blur) var(--color2),
       -25px 0px var(--blur) var(--color1), -45px 0px var(--blur) var(--color2);
   } */
- 
-  100%{
-      box-shadow: 25px 0px var(--blur) var(--color1), 45px 0px var(--blur) var(--color2), 60px 0px var(--blur) var(--color3),
-    -25px 0px var(--blur) var(--color1), -45px 0px var(--blur) var(--color2), -60px 0px var(--blur) var(--color3);
+
+  100% {
+    box-shadow: 25px 0px var(--blur) var(--color1),
+      45px 0px var(--blur) var(--color2), 60px 0px var(--blur) var(--color3),
+      -25px 0px var(--blur) var(--color1), -45px 0px var(--blur) var(--color2),
+      -60px 0px var(--blur) var(--color3);
   }
 }
 
@@ -194,7 +239,7 @@ position:unset;
   background-color: #0069d9;
 }
 
-#uploadButton {
+#searchButton {
   margin-top: 5rem;
   width: 15rem;
   height: 2rem;
@@ -207,6 +252,6 @@ position:unset;
   cursor: pointer;
 }
 
-#uploadButton:hover {
+#searchButton:hover {
   background-color: #0069d9;
 }

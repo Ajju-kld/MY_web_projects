@@ -1,26 +1,33 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Image search</title>
- <link rel="stylesheet" href="style.css">
-  <script type="module" src="main.js">
-   
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImageSearch</title>
+    <link rel="stylesheet" href="search.css">
+    <script type="module" src="main.js"></script>
 </head>
 <body>
-  <h1 class="heading1">
-    Image search using weaviate db
-  </h1> 
-   <div class="container">
-    <div class="upload-area" id="uploadArea">
+    <h1> Image search using weaviate db</h1>
+   <div class="main-body">
+    <div class="contnt backspinner-1"></div>
+    <div class="contnt backspinner-2"></div>
+     <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+<div class="upload-area" id="uploadArea">
       <p>Drag and drop file here</p>
       <input type="file" id="uploadInput">
     </div>
-    <button id="selectButton">Select File</button>
-    <button id="searchButton">Search</button>
-    <div id="preview"></div>
-    <div id="results">Results</div>
-  </div>
-  <a href="upload.html">click here</a>
+<button id="selectButton">Select File</button>
+    <button id="searchButton">Search</button></div>
+    <div class="card-back">
+
+      <h1 class="result">Result</h1>
+    </div>
+     </div>
+    </div>
+    </div>
 </body>
 </html>

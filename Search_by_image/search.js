@@ -1,29 +1,42 @@
 import weaviate from 'weaviate-ts-client';
-
+import { loading } from './Upload';
+import {upload} from './Upload';
 // declare a client instance
 const client = weaviate.client({
     scheme: 'http',
     host: 'localhost:8080',
 });
+
 // functionn when the client press the search button
 export function Search_event(uploadInput) {
     const file = uploadInput.files[0];
-
+let data;
     if (file) {
+        loading(true);
         const reader = new FileReader();
-
+       
         reader.onload = async function (event) {
             const imageData = event.target.result;
 
-            // Perform image search
-            const data = await performImageSearch(imageData);
-
-            displayImage(data);
+            // Wait for 3 seconds before performing image search
+             data=await performImageSearch(imageData);
+            displayImage(data)
+          //this is to show the loading indicator since it is locally hosted and it super fast in local server
+           setTimeout( () => {
+            
+               loading(false);
+               
+               var flipCard = document.querySelector('.card');
+               flipCard.classList.toggle('flipped');
+               
+            }, 3000);
         };
-
+        
+       
         reader.readAsDataURL(file);
     }
 }
+
 let hasFileInput = true;
 const imageElement = document.createElement('img');
 
@@ -81,7 +94,7 @@ async function performImageSearch(imageData) {
 
     console.log('Performing image search with base64 data:', imageData);
     console.log('Result:', result);
-
+ 
     return result;
 }
 let image_already_found = false;
@@ -96,7 +109,7 @@ function displayImage(data) {
     if (!image_already_found) {
     imageElement2.src = `data:image/jpeg;base64,${data}`;
 
-    const imageContainer = document.getElementById('results');
+    const imageContainer = document.querySelector('.card-back');
   
     imageContainer.appendChild(imageElement2);
     }

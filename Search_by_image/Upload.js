@@ -44,43 +44,7 @@ if(element.classList.contains('animate_card')){
   
 }
 
-export function previewImage(uploadInput) {
-    const file = uploadInput.files[0];
-
-    const reader = new FileReader();
-
-    reader.onload = function (event) {
-        imageElement.src = event.target.result;
-
-        const parentElement = uploadInput.parentNode;
-        if (parentElement && parentElement.contains(uploadInput)) {
-            parentElement.removeChild(uploadInput);
-            
-        }
-
-        const imageContainer = document.getElementById('uploadArea');
-        imageContainer.innerHTML = '';
-        imageContainer.className = 'uploadArea_afterUpload';
-        imageContainer.appendChild(imageElement);
-    };
-
-
-    if (file) {
-        reader.readAsDataURL(file);
-    } else {
-        imageElement.src = '';
-        const imageContainer = document.getElementById('uploadArea');
-        imageContainer.innerHTML = `<p>Drag and drop file here</p>`;
-        imageContainer.appendChild(uploadInput);
-        hasFileInput = true;
-        imageContainer.className = 'upload-area'
-
-    }
-}
-
-
-
-async function upload(imageData){
+export async function upload(imageData){
     const image = imageData.split(',')[1];
     try {
 
@@ -100,7 +64,7 @@ async function upload(imageData){
     }
 }
 
-function loading(condition) {
+export function loading(condition) {
     const spinner1 = document.querySelector('.backspinner-1');
     const spinner2 = document.querySelector('.backspinner-2');
 

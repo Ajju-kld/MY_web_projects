@@ -4,70 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vector Image Database Project</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 0;
-    }
-
-    h1 {
-      margin-top: 50px;
-      color: #333;
-    }
-
-    h2 {
-      font-size: 24px;
-      color: #555;
-    }
-
-    p {
-      font-size: 18px;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.6;
-      color: #555;
-    }
-
-    .buttons-container {
-      margin-top: 30px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 10px;
-      border: 1px solid #333;
-      border-radius: 5px;
-      background-color: #f0f0f0;
-      cursor: pointer;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .button:hover {
-      background-color: #333;
-      color: #f0f0f0;
-    }
-  </style>
+ <link rel="stylesheet" href="index.css">
 </head>
 <body>
   <h1>Welcome to Vector Image Database Project</h1>
   <p>
-    Explore the remarkable potential of vector embeddings in the world of image management and search. Our project is designed to familiarize you with the concept of inserting images into a vector database and conducting image searches using these embeddings.
+    Explore the remarkable potential of vector embeddings in the world of image management and search. this project is designed to familiarize you with the concept of inserting images into a vector database and conducting image searches.
+    The project uses the weaviate database to search and store images its one of the open source vector databases available.
   </p>
  
   <h2>The Image Insertion Process</h2>
   <p>
-    When you upload an image using the "Upload" button below, our system performs real-time vectorization. The uploaded image is analyzed, and its vector representation is stored securely in our vector database. This process enables seamless retrieval and comparison of images without compromising on efficiency.
+    When you upload an image using the "Upload" button below, The image is converted to base64 and uploaded into the vector database.The images are stored as vector embedings .This process enables seamless retrieval and comparison of images without compromising on efficiency.
   </p>
   <h2>Image Search using Vector Embeddings</h2>
   <p>
-    The "Search" feature is where the true power of vector embeddings shines. By uploading an image, the system converts it into its vector form and scans our vast vector database for similar visual patterns. This allows you to discover visually related images in a matter of seconds, opening up new possibilities in image search and retrieval.
+    The "Search" feature is where the true power of vector embeddings shines. By uploading an image, the system converts it into its vector form and scans the vector database for similar visual patterns. This allows you to discover visually related images in a matter of seconds, opening up new possibilities in image search and retrieval.
   </p>
   <h2>Why Vector Image Database?</h2>
   <p>

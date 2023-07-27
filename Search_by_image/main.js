@@ -13,7 +13,38 @@ const uploadInput = document.getElementById('uploadInput');
 const searchButton = document.getElementById('searchButton');
 const upload_button = document.getElementById('uploadButton');
 const select_item=document.getElementById('selectButton');
+const uploadArea = document.getElementById('uploadArea');
+
+// Add event listeners for drag and drop
+uploadArea.addEventListener('dragover', (event) => {
+  event.preventDefault();
+  uploadArea.classList.add('drag-over');
+});
+
+uploadArea.addEventListener('dragleave', () => {
+  uploadArea.classList.remove('drag-over');
+});
+
+uploadArea.addEventListener('drop', (event) => {
+  event.preventDefault();
+  uploadArea.classList.remove('drag-over');
+
+  const file = event.dataTransfer.files[0];
+
+  // Redirect the file to the uploadInput
+  const fileList = new DataTransfer();
+  fileList.items.add(file);
+  uploadInput.files = fileList.files;
+
+  // Call previewImage with the new file in uploadInput
+  previewImage(uploadInput);
+
+  console.log("Dropped file");
+});
+
+
 uploadInput.addEventListener('change', () => {
+  
   previewImage(uploadInput);
 });
 select_item.addEventListener('click', () => {
